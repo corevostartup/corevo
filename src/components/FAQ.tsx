@@ -99,19 +99,6 @@ export function FAQ() {
           })}
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-10 flex justify-center"
-        >
-          <a
-            href="#contato"
-            className="rounded-full bg-gradient-corevo px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20"
-          >
-            Criar conta / conversar
-          </a>
-        </motion.div>
       </div>
     </section>
   );

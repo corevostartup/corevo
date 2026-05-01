@@ -47,3 +47,34 @@ body {
     ),
     linear-gradient(to bottom, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
 }
+
+@keyframes ticker-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes ticker-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.ticker-track {
+  width: max-content;
+  animation: ticker-left 28s linear infinite;
+}
+
+.ticker-track-reverse {
+  animation-name: ticker-right;
+}
+
+.projects-ticker:hover .ticker-track {
+  animation-play-state: paused;
+}

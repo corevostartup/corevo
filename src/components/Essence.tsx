@@ -52,30 +52,32 @@ export function Essence() {
                 Filosofia
               </h3>
               <p className="mt-4 text-slate-400">
-                A verdadeira inovação não está na complexidade. Está na clareza.
-                Criamos produtos que resolvem problemas reais, eliminam
-                fricção e entregam valor imediato.
+                A filosofia da Corevo e baseada em construcao inteligente de
+                solucoes que conectam tecnologia, pessoas e negocios de forma
+                pratica e escalavel, com foco em impacto real e sem
+                complexidade desnecessaria.
               </p>
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              <div className="mt-8 space-y-4">
                 <div className="rounded-2xl border border-blue-500/20 bg-blue-500/5 p-4">
-                  <p className="text-sm font-semibold text-blue-300">Azul</p>
+                  <p className="text-sm font-semibold text-blue-300">
+                    1. Simplicidade estrategica
+                  </p>
                   <p className="mt-1 text-xs text-slate-400">
-                    Tecnologia, inteligência, confiança
+                    Criar produtos diretos, intuitivos e eficientes, eliminando
+                    o excesso e focando no que realmente gera valor.
                   </p>
                 </div>
                 <div className="rounded-2xl border border-purple-500/20 bg-purple-500/5 p-4">
-                  <p className="text-sm font-semibold text-purple-300">Roxo</p>
+                  <p className="text-sm font-semibold text-purple-300">
+                    2. Execucao acelerada com inteligencia
+                  </p>
                   <p className="mt-1 text-xs text-slate-400">
-                    Criatividade, inovação, futuro
+                    Transformar ideias em solucoes reais rapidamente, usando
+                    tecnologia e IA para validar, lancar e evoluir produtos em
+                    alta velocidade.
                   </p>
                 </div>
               </div>
-              <p className="mt-6 text-sm text-slate-300">
-                A fusão do gradiente Corevo é posicionamento:{" "}
-                <strong className="text-white">
-                  tecnologia aplicada com criatividade estratégica.
-                </strong>
-              </p>
             </div>
           </motion.div>
         </div>

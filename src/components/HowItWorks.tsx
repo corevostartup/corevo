@@ -31,7 +31,7 @@ export function HowItWorks() {
           className="mx-auto max-w-2xl text-center"
         >
           <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            Como funciona
+            Nosso Método
           </h2>
           <p className="mt-4 text-slate-400">
             Uma forma simples, rápida e consistente de ir da ideia ao produto —

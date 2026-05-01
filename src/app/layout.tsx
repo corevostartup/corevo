@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "COREVO | Core Evolution — Ecossistemas digitais com propósito",
+  title: "Corevo | Core Evolution",
   description:
     "Startup de tecnologia que conecta inteligência, pessoas e negócios. Produtos digitais com experiência objetiva, performance e integração real.",
   keywords: [

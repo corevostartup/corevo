@@ -35,14 +35,6 @@ export function Hero() {
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <motion.a
-              href="#contato"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex w-full items-center justify-center rounded-full bg-gradient-corevo px-8 py-4 text-base font-semibold text-white shadow-xl shadow-indigo-500/25 sm:w-auto"
-            >
-              Começar agora
-            </motion.a>
-            <motion.a
               href="#projetos"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}

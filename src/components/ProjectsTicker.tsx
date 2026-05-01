@@ -1,30 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const projects = [
-  { name: "Locus", tag: "Imobiliário", trend: "+foco" },
-  { name: "PINEE", tag: "Finanças", trend: "+clareza" },
-  { name: "Pollen", tag: "Hábitos", trend: "+consistência" },
-  { name: "PetMemorial", tag: "Memórias", trend: "+significado" },
-  { name: "Lyka", tag: "Pets", trend: "+bem-estar" },
-  { name: "Julius Compras", tag: "Compras", trend: "+organização" },
-];
+import Link from "next/link";
+import { projects } from "@/data/projects";
 
 function Row({ reverse }: { reverse?: boolean }) {
   const doubled = [...projects, ...projects];
   return (
     <div className="relative overflow-hidden py-2">
-      <motion.div
-        className="flex gap-4"
-        animate={{ x: reverse ? ["0%", "-50%"] : ["-50%", "0%"] }}
-        transition={{
-          x: { repeat: Infinity, duration: 28, ease: "linear" },
-        }}
+      <div
+        className={`ticker-track ${reverse ? "ticker-track-reverse" : ""} flex gap-4`}
       >
         {doubled.map((p, i) => (
-          <div
+          <Link
             key={`${p.name}-${i}`}
+            href={`/projetos/${p.slug}`}
             className="flex min-w-[200px] shrink-0 flex-col rounded-2xl border border-white/[0.08] bg-white/[0.04] px-5 py-4 backdrop-blur-sm"
           >
             <div className="flex items-center justify-between gap-3">
@@ -34,9 +24,9 @@ function Row({ reverse }: { reverse?: boolean }) {
               </span>
             </div>
             <span className="mt-1 text-xs text-slate-500">{p.tag}</span>
-          </div>
+          </Link>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }
@@ -71,7 +61,7 @@ export function ProjectsTicker() {
           </motion.a>
         </motion.div>
 
-        <div className="mt-12 space-y-3 rounded-3xl border border-white/[0.06] bg-gradient-to-b from-white/[0.04] to-transparent p-4">
+        <div className="projects-ticker mt-12 space-y-3 rounded-3xl border border-white/[0.06] bg-gradient-to-b from-white/[0.04] to-transparent p-4">
           <Row />
           <Row reverse />
         </div>

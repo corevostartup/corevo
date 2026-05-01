@@ -2,12 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
 
 const nav = [
   { href: "#o-que-fazemos", label: "O que fazemos" },
   { href: "#projetos", label: "Projetos" },
-  { href: "#como-funciona", label: "Como funciona" },
+  { href: "#como-funciona", label: "Nosso Método" },
   { href: "#planos", label: "Planos" },
   { href: "#faq", label: "FAQ" },
 ];
@@ -15,6 +18,10 @@ const nav = [
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  const toSection = (hash: string) => (isHome ? hash : `/${hash}`);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -33,12 +40,15 @@ export function Header() {
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <a
-          href="#topo"
-          className="flex items-center gap-2 font-semibold tracking-tight text-white"
-        >
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-corevo text-sm font-bold text-white shadow-lg shadow-indigo-500/25">
-            C
+        <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight text-white">
+          <span className="relative h-9 w-9 shrink-0">
+            <Image
+              src="/corevo-logo.png"
+              alt="Logo da Corevo"
+              fill
+              className="object-contain"
+              priority
+            />
           </span>
           <span className="text-lg">
             COREVO
@@ -46,27 +56,27 @@ export function Header() {
               Core Evolution
             </span>
           </span>
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
           {nav.map((item) => (
-            <a
+            <Link
               key={item.href}
-              href={item.href}
+              href={toSection(item.href)}
               className="text-sm text-slate-300 transition-colors hover:text-white"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
         <div className="hidden md:block">
-          <a
-            href="#contato"
+          <Link
+            href={toSection("#contato")}
             className="inline-flex items-center justify-center rounded-full bg-gradient-corevo px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-indigo-500/30 transition-all hover:shadow-indigo-500/45 hover:brightness-110"
           >
             Fale conosco
-          </a>
+          </Link>
         </div>
 
         <button
@@ -110,22 +120,22 @@ export function Header() {
           >
             <div className="flex flex-col gap-1 px-4 py-4">
               {nav.map((item) => (
-                <a
+                <Link
                   key={item.href}
-                  href={item.href}
+                  href={toSection(item.href)}
                   className="rounded-lg px-3 py-3 text-slate-200 hover:bg-white/5"
                   onClick={() => setOpen(false)}
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
-              <a
-                href="#contato"
+              <Link
+                href={toSection("#contato")}
                 className="mt-2 rounded-full bg-gradient-corevo py-3 text-center font-medium text-white"
                 onClick={() => setOpen(false)}
               >
                 Fale conosco
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}
