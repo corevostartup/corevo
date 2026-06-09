@@ -90,30 +90,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   </div>
                 </div>
               ) : null}
-              {(project.websiteUrl || project.instagramUrl) && (
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {project.websiteUrl ? (
-                    <a
-                      href={project.websiteUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex rounded-full border border-white/15 bg-white/[0.04] px-3 py-1.5 text-xs font-medium text-slate-200 transition-colors hover:bg-white/[0.08]"
-                    >
-                      Site oficial
-                    </a>
-                  ) : null}
-                  {project.instagramUrl ? (
-                    <a
-                      href={project.instagramUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex rounded-full border border-white/15 bg-white/[0.04] px-3 py-1.5 text-xs font-medium text-slate-200 transition-colors hover:bg-white/[0.08]"
-                    >
-                      Instagram
-                    </a>
-                  ) : null}
-                </div>
-              )}
               <p className="mt-4 max-w-3xl text-lg text-slate-300">
                 {project.summary}
               </p>
@@ -186,6 +162,30 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 </div>
               </div>
             </div>
+            {(project.websiteUrl || project.instagramUrl) && (
+              <div className="mt-3 flex flex-wrap gap-2">
+                {project.websiteUrl ? (
+                  <a
+                    href={project.websiteUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex rounded-full border border-white/15 bg-white/[0.04] px-3 py-1.5 text-xs font-medium text-slate-200 transition-colors hover:bg-white/[0.08]"
+                  >
+                    Site oficial
+                  </a>
+                ) : null}
+                {project.instagramUrl ? (
+                  <a
+                    href={project.instagramUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex rounded-full border border-white/15 bg-white/[0.04] px-3 py-1.5 text-xs font-medium text-slate-200 transition-colors hover:bg-white/[0.08]"
+                  >
+                    Instagram
+                  </a>
+                ) : null}
+              </div>
+            )}
           </div>
         </section>
         <CTA />

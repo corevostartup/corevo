@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { LocusBanner } from "@/components/LocusBanner";
 
 export function Hero() {
   return (
@@ -11,10 +12,12 @@ export function Hero() {
       <div className="pointer-events-none absolute left-1/2 top-24 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-gradient-to-r from-blue-600/20 via-indigo-600/15 to-purple-600/20 blur-3xl" />
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <LocusBanner />
+
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
           className="mx-auto max-w-3xl text-center"
         >
           <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-slate-400">

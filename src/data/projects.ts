@@ -55,6 +55,8 @@ export const projects: Project[] = [
     iconWithoutWhiteFrame: true,
     disableLogoBlend: true,
     appStoreUrl: "https://apps.apple.com/br/app/pinee/id6751927815",
+    websiteUrl: "https://pinee.netlify.app/",
+    instagramUrl: "https://www.instagram.com/pinee.corevo",
     summary: "Controle financeiro pessoal com abordagem pratica.",
     description:
       "O PINEE foi desenhado para transformar rotina financeira em habito simples: registrar, entender e evoluir com consistencia.",
@@ -78,6 +80,8 @@ export const projects: Project[] = [
     disableLogoBlend: true,
     appStoreUrl:
       "https://apps.apple.com/br/app/pollen-h%C3%A1bitos-di%C3%A1rios/id6752633472",
+    websiteUrl: "https://pollenapp.netlify.app/",
+    instagramUrl: "https://www.instagram.com/pollen.corevo",
     summary: "Sistema de micro-habitos para evolucao diaria.",
     description:
       "O Pollen transforma pequenas acoes em progresso continuo com reforcos visuais, ciclos de consistencia e foco em longo prazo.",
