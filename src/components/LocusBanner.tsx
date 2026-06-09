@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-/** Resolução nativa do arquivo — nunca exibir acima disso para evitar upscale borrado */
+/** Resolução nativa do arquivo — não exibir acima disso para evitar upscale borrado */
 const BANNER_WIDTH = 1024;
 const BANNER_HEIGHT = 409;
 
@@ -20,7 +20,6 @@ export function LocusBanner() {
         className="mx-auto block max-w-[1024px] overflow-hidden rounded-2xl border border-white/[0.08] shadow-lg shadow-black/25 transition-colors duration-300 hover:border-indigo-500/30"
         aria-label="Conheça o Locus — plataforma imobiliária"
       >
-        {/* Arquivo estático servido sem otimização/compressão do Next.js */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/banners/locus-banner.png"

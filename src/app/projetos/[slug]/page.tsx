@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { ProjectExternalLinks } from "@/components/ProjectExternalLinks";
 import { getProjectBySlug, projects } from "@/data/projects";
 
 type ProjectPageProps = {
@@ -90,48 +91,43 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   </div>
                 </div>
               ) : null}
-              <p className="mt-4 max-w-3xl text-lg text-slate-300">
+              {(project.websiteUrl ||
+                project.instagramUrl ||
+                project.appStoreUrl ||
+                project.playStoreUrl) && (
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <ProjectExternalLinks
+                    websiteUrl={project.websiteUrl}
+                    instagramUrl={project.instagramUrl}
+                  />
+                  {project.appStoreUrl ? (
+                    <a
+                      href={project.appStoreUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center justify-center rounded-full bg-gradient-corevo px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition-all hover:brightness-110"
+                    >
+                      Download na Apple Store
+                    </a>
+                  ) : null}
+                  {project.playStoreUrl ? (
+                    <a
+                      href={project.playStoreUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/[0.08] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:border-white/35 hover:bg-white/[0.14]"
+                    >
+                      Download na Play Store
+                    </a>
+                  ) : null}
+                </div>
+              )}
+              <p className="mt-6 max-w-3xl text-lg text-slate-300">
                 {project.summary}
               </p>
               <p className="mt-5 max-w-3xl leading-relaxed text-slate-400">
                 {project.description}
               </p>
-              {project.appStoreUrl ? (
-                <div className="mt-6">
-                  <div className="flex flex-wrap gap-2">
-                    <a
-                      href={project.appStoreUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex rounded-full bg-gradient-corevo px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition-all hover:brightness-110"
-                    >
-                      Download na Apple Store
-                    </a>
-                    {project.playStoreUrl ? (
-                      <a
-                        href={project.playStoreUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex rounded-full border border-white/15 bg-white/[0.05] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/[0.1]"
-                      >
-                        Download na Play Store
-                      </a>
-                    ) : null}
-                  </div>
-                </div>
-              ) : null}
-              {!project.appStoreUrl && project.playStoreUrl ? (
-                <div className="mt-6">
-                  <a
-                    href={project.playStoreUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex rounded-full border border-white/15 bg-white/[0.05] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/[0.1]"
-                  >
-                    Download na Play Store
-                  </a>
-                </div>
-              ) : null}
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
                 <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-5">
                   <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-300">
@@ -162,30 +158,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 </div>
               </div>
             </div>
-            {(project.websiteUrl || project.instagramUrl) && (
-              <div className="mt-3 flex flex-wrap gap-2">
-                {project.websiteUrl ? (
-                  <a
-                    href={project.websiteUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex rounded-full border border-white/15 bg-white/[0.04] px-3 py-1.5 text-xs font-medium text-slate-200 transition-colors hover:bg-white/[0.08]"
-                  >
-                    Site oficial
-                  </a>
-                ) : null}
-                {project.instagramUrl ? (
-                  <a
-                    href={project.instagramUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex rounded-full border border-white/15 bg-white/[0.04] px-3 py-1.5 text-xs font-medium text-slate-200 transition-colors hover:bg-white/[0.08]"
-                  >
-                    Instagram
-                  </a>
-                ) : null}
-              </div>
-            )}
           </div>
         </section>
         <CTA />
