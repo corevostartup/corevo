@@ -1,3 +1,9 @@
+export type ProjectSection = {
+  title: string;
+  paragraphs?: string[];
+  bullets?: string[];
+};
+
 export type Project = {
   slug: string;
   name: string;
@@ -17,9 +23,39 @@ export type Project = {
   description: string;
   highlights: string[];
   platforms: string[];
+  metaTitle?: string;
+  metaDescription?: string;
+  sections?: ProjectSection[];
 };
 
+import {
+  convergeGestaoMeta,
+  convergeGestaoSections,
+} from "@/data/converge-gestao-content";
+
 export const projects: Project[] = [
+  {
+    slug: "converge-gestao",
+    name: "Converge Gestão",
+    tag: "Entidades",
+    trend: "+integracao",
+    logoTitle: "Converge Gestão",
+    logoSubtitle: "Plataforma para entidades e associações",
+    summary:
+      "Site, sistema administrativo e app num só lugar, para entidades que querem crescer com organização.",
+    description:
+      "Solução Corevo que integra site institucional, painel administrativo e aplicativo mobile para associações, CDLs, sindicatos e entidades de classe. Eventos, pagamentos, credenciamento e certificados na mesma base.",
+    highlights: [
+      "Site, painel e app integrados",
+      "Eventos do anúncio ao certificado",
+      "Pagamentos e credenciamento por QR Code",
+      "Validado em produção na CDL Paulo Afonso",
+    ],
+    platforms: ["Web", "Painel admin", "App mobile"],
+    metaTitle: convergeGestaoMeta.title,
+    metaDescription: convergeGestaoMeta.description,
+    sections: convergeGestaoSections,
+  },
   {
     slug: "locus",
     name: "Locus",

@@ -27,8 +27,8 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${project.name} | Corevo`,
-    description: project.summary,
+    title: project.metaTitle ?? `${project.name} | Corevo`,
+    description: project.metaDescription ?? project.summary,
   };
 }
 
@@ -60,6 +60,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <h1 className="mt-5 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
                 {project.name}
               </h1>
+              {!project.logo && project.logoSubtitle ? (
+                <p className="mt-3 max-w-2xl text-lg text-slate-400">
+                  {project.logoSubtitle}
+                </p>
+              ) : null}
               {project.logo ? (
                 <div className="mt-6 flex items-center gap-4 rounded-2xl border border-white/[0.08] bg-white/[0.02] p-4 sm:max-w-md">
                   <div className="relative h-20 w-20 shrink-0">
@@ -157,6 +162,46 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   </div>
                 </div>
               </div>
+              {project.sections?.length ? (
+                <div className="mt-10 space-y-6 border-t border-white/[0.08] pt-10">
+                  {project.sections.map((section) => (
+                    <div
+                      key={section.title}
+                      className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 sm:p-7"
+                    >
+                      <h2 className="text-lg font-semibold tracking-tight text-white">
+                        {section.title}
+                      </h2>
+                      {section.paragraphs?.map((paragraph) => (
+                        <p
+                          key={paragraph}
+                          className="mt-3 text-sm leading-relaxed text-slate-400 sm:text-base"
+                        >
+                          {paragraph}
+                        </p>
+                      ))}
+                      {section.bullets?.length ? (
+                        <ul className="mt-3 space-y-2">
+                          {section.bullets.map((item) => (
+                            <li
+                              key={item}
+                              className="text-sm leading-relaxed text-slate-400"
+                            >
+                              • {item}
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
+                    </div>
+                  ))}
+                  <a
+                    href="/#contato"
+                    className="inline-flex rounded-full bg-gradient-corevo px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition-all hover:brightness-110"
+                  >
+                    Agendar demonstração
+                  </a>
+                </div>
+              ) : null}
             </div>
           </div>
         </section>
