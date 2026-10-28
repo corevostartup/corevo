@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Corevo | Core Evolution",
   description:
-    "Startup de tecnologia que conecta inteligência, pessoas e negócios. Produtos digitais com experiência objetiva, performance e integração real.",
+    "Startup de tecnologia: apps e plataformas em mobile, desktop e web. Software próprio e projetos sob medida com foco em gestão e usabilidade.",
   keywords: [
     "Corevo",
     "startup",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "COREVO — Core Evolution",
     description:
-      "Ecossistemas digitais com propósito. Tecnologia aplicada com criatividade estratégica.",
+      "Apps e plataformas digitais: do mobile ao painel de gestão. Corevo desenvolve e opera software próprio e projetos alinhados à operação do cliente.",
     type: "website",
     locale: "pt_BR",
   },

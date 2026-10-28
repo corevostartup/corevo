@@ -11,7 +11,7 @@ const nav = [
   { href: "#o-que-fazemos", label: "O que fazemos" },
   { href: "#projetos", label: "Projetos" },
   { href: "#como-funciona", label: "Nosso Método" },
-  { href: "#planos", label: "Planos" },
+  { href: "#planos", label: "Contato" },
   { href: "#faq", label: "FAQ" },
 ];
 

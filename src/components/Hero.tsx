@@ -22,19 +22,20 @@ export function Hero() {
         >
           <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-slate-400">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
-            Ecossistemas digitais com propósito
+            Tecnologia · apps e plataformas
           </p>
-          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl lg:leading-[1.08]">
-            Conecte{" "}
-            <span className="text-gradient-corevo">inteligência, pessoas</span>{" "}
-            e negócios para gerar{" "}
-            <span className="text-gradient-corevo">evolução real</span>.
+          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-[3.25rem] lg:leading-[1.12]">
+            Produtos digitais: do{" "}
+            <span className="text-gradient-corevo">aplicativo mobile</span> ao
+            painel de gestão da operação.
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-400">
-            A Corevo cria soluções digitais que simplificam processos, aumentam
-            eficiência e transformam como pessoas trabalham e consomem
-            tecnologia. Não construímos apenas aplicativos — construímos
-            ecossistemas com direção.
+            A Corevo é uma startup de tecnologia que desenvolve e opera software
+            próprio — incluindo Locus, PINEE e Converge Gestão — e realiza
+            projetos sob medida alinhados à operação do cliente. Nossas soluções
+            cobrem mobile, desktop e web, com interfaces objetivas e fluxos
+            consistentes, pensados para uso contínuo por equipes e usuários
+            finais.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <motion.a

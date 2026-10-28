@@ -16,15 +16,16 @@ export function Essence() {
               Nossa essência
             </h2>
             <p className="mt-4 text-slate-400">
-              Tecnologia sem direção é apenas código. O que nos move é a
-              convergência entre visão e inovação, estratégia e propósito, e
-              execução de engenharia que entrega no mundo real.
+              Somos uma startup de software: desenvolvemos apps e plataformas
+              para empresas e entidades que precisam organizar operação,
+              atendimento e presença digital — com entrega publicada e
+              acompanhamento depois do lançamento.
             </p>
             <ul className="mt-8 space-y-4">
               {[
-                "Visão tecnológica e inovação",
-                "Estratégia, liderança e propósito",
-                "Execução, engenharia e construção real",
+                "Entender o processo do cliente antes de definir escopo",
+                "Construir mobile, web e painel administrativo quando fizer sentido",
+                "Publicar, medir e evoluir — não entregar e desaparecer",
               ].map((line) => (
                 <li
                   key={line}
@@ -36,7 +37,7 @@ export function Essence() {
               ))}
             </ul>
             <p className="mt-8 text-lg font-medium text-gradient-corevo">
-              O resultado nasce da conexão.
+              Software útil no dia a dia das equipes — esse é o critério.
             </p>
           </motion.div>
 

@@ -1,60 +1,45 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/cn";
 
-type Period = "monthly" | "yearly";
-
-const plans = [
+const topics = [
   {
-    name: "Discovery",
-    desc: "Ideal para validar ideia e desenhar o primeiro passo com clareza.",
-    monthly: "Sob consulta",
-    yearly: "Condições para pacote estendido",
-    featured: false,
-    features: [
-      "Workshop de alinhamento",
-      "Mapa de produto e riscos",
-      "Protótipo navegável",
-      "Estimativa de esforço",
-    ],
-    cta: "Agendar conversa",
-  },
-  {
-    name: "Squads",
-    desc: "Time dedicado para construir e iterar com ritmo de startup.",
-    monthly: "Sob consulta",
-    yearly: "Benefício em compromisso anual",
+    name: "Projeto sob medida",
+    desc: "Você precisa de app, site ou painel para a operação da empresa.",
     featured: true,
-    features: [
-      "Design + engenharia integrados",
-      "Sprints quinzenais",
-      "CI/CD e observabilidade",
-      "Suporte prioritário",
-      "Roadmap compartilhado",
+    points: [
+      "Conte o contexto e o processo que quer digitalizar",
+      "Alinhamos escopo, prazo e forma de entrega",
+      "Desenvolvimento com acompanhamento até a publicação",
     ],
-    cta: "Falar com vendas",
+    cta: "Iniciar conversa",
   },
   {
-    name: "Enterprise",
-    desc: "Parceria profunda: múltiplos produtos, integrações e governança.",
-    monthly: "Personalizado",
-    yearly: "Personalizado",
+    name: "Plataforma para entidade",
+    desc: "Associação, CDL, sindicato ou entidade com associados e eventos.",
     featured: false,
-    features: [
-      "Arquitetura multi-produto",
-      "SLAs e segurança reforçada",
-      "Integrações sob medida",
-      "Canal direto com liderança",
+    points: [
+      "Site, painel e mobile integrados",
+      "Eventos, cadastros, pagamentos e credenciamento",
+      "Demonstração do que já entregamos em produção",
     ],
-    cta: "Solicitar proposta",
+    cta: "Agendar demonstração",
+  },
+  {
+    name: "Nossos produtos",
+    desc: "Dúvidas sobre apps do portfólio, parceria ou suporte a usuários.",
+    featured: false,
+    points: [
+      "Informações sobre apps publicados",
+      "Canal para suporte e feedback",
+      "Oportunidades de parceria comercial",
+    ],
+    cta: "Enviar mensagem",
   },
 ];
 
 export function Pricing() {
-  const [period, setPeriod] = useState<Period>("monthly");
-
   return (
     <section id="planos" className="py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -65,84 +50,41 @@ export function Pricing() {
           className="mx-auto max-w-2xl text-center"
         >
           <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            Escolha como evoluir
+            Fale com a Corevo
           </h2>
           <p className="mt-4 text-slate-400">
-            Modelos transparentes para cada estágio — escale sem surpresas,
-            com propósito e engenharia alinhados.
+            Conte o que você precisa. Respondemos com próximo passo claro — sem
+            pacote genérico nem tabela de preço fixa no site.
           </p>
-
-          <div className="mt-8 inline-flex rounded-full border border-white/10 bg-white/[0.04] p-1">
-            <button
-              type="button"
-              onClick={() => setPeriod("monthly")}
-              className={cn(
-                "rounded-full px-5 py-2 text-sm font-medium transition-all",
-                period === "monthly"
-                  ? "bg-white text-slate-900"
-                  : "text-slate-400 hover:text-white",
-              )}
-            >
-              Mensal
-            </button>
-            <button
-              type="button"
-              onClick={() => setPeriod("yearly")}
-              className={cn(
-                "rounded-full px-5 py-2 text-sm font-medium transition-all",
-                period === "yearly"
-                  ? "bg-white text-slate-900"
-                  : "text-slate-400 hover:text-white",
-              )}
-            >
-              Anual
-              <span className="ml-2 rounded-full bg-emerald-500/20 px-2 py-0.5 text-xs text-emerald-400">
-                -20%
-              </span>
-            </button>
-          </div>
         </motion.div>
 
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
-          {plans.map((plan, index) => (
+          {topics.map((topic, index) => (
             <motion.div
-              key={plan.name}
+              key={topic.name}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.08 }}
               className={cn(
                 "relative flex flex-col rounded-2xl border p-8",
-                plan.featured
+                topic.featured
                   ? "border-indigo-500/40 bg-gradient-to-b from-indigo-500/10 to-purple-500/5 shadow-xl shadow-indigo-500/10"
                   : "border-white/[0.08] bg-white/[0.03]",
               )}
             >
-              {plan.featured && (
+              {topic.featured && (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-corevo px-3 py-1 text-xs font-semibold text-white">
-                  Popular
+                  Mais comum
                 </span>
               )}
-              <h3 className="text-xl font-semibold text-white">{plan.name}</h3>
-              <p className="mt-2 text-sm text-slate-400">{plan.desc}</p>
-              <p className="mt-6 text-3xl font-semibold text-white">
-                {period === "monthly" ? plan.monthly : plan.yearly}
-              </p>
-              {plan.name === "Squads" && (
-                <p className="text-xs text-slate-500">
-                  {period === "monthly"
-                    ? "Valores alinhados ao escopo e prazo"
-                    : "Desconto proporcional ao período contratado"}
-                </p>
-              )}
+              <h3 className="text-xl font-semibold text-white">{topic.name}</h3>
+              <p className="mt-2 text-sm text-slate-400">{topic.desc}</p>
               <ul className="mt-8 flex-1 space-y-3">
-                {plan.features.map((f) => (
-                  <li
-                    key={f}
-                    className="flex gap-2 text-sm text-slate-300"
-                  >
-                    <span className="text-emerald-400">✓</span>
-                    {f}
+                {topic.points.map((point) => (
+                  <li key={point} className="flex gap-2 text-sm text-slate-300">
+                    <span className="text-indigo-400">·</span>
+                    {point}
                   </li>
                 ))}
               </ul>
@@ -152,16 +94,26 @@ export function Pricing() {
                 whileTap={{ scale: 0.98 }}
                 className={cn(
                   "mt-8 block w-full rounded-full py-3 text-center text-sm font-semibold transition-colors",
-                  plan.featured
+                  topic.featured
                     ? "bg-gradient-corevo text-white shadow-lg shadow-indigo-500/25"
                     : "border border-white/15 bg-white/[0.05] text-white hover:bg-white/[0.1]",
                 )}
               >
-                {plan.cta}
+                {topic.cta}
               </motion.a>
             </motion.div>
           ))}
         </div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mx-auto mt-10 max-w-xl text-center text-sm text-slate-500"
+        >
+          Todos os caminhos levam ao contato abaixo. Escolha o assunto e use o
+          e-mail que preferir — comercial ou suporte.
+        </motion.p>
       </div>
     </section>
   );

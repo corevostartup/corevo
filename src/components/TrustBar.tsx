@@ -14,30 +14,32 @@ export function TrustBar() {
           className="flex flex-col items-center justify-between gap-8 md:flex-row"
         >
           <p className="text-center text-sm font-medium uppercase tracking-widest text-slate-500 md:text-left">
-            Quem confia na nossa execução
+            Portfólio Corevo
           </p>
           <div className="flex flex-wrap items-center justify-center gap-10 md:gap-14">
             <div className="text-center">
-              <p className="text-3xl font-semibold text-white">6+</p>
-              <p className="text-xs text-slate-500">produtos lançados</p>
+              <p className="text-3xl font-semibold text-white">4</p>
+              <p className="text-xs text-slate-500">apps na App Store</p>
             </div>
-            <div className="h-10 w-px bg-white/10 hidden sm:block" />
+            <div className="hidden h-10 w-px bg-white/10 sm:block" />
             <div className="text-center">
-              <p className="text-3xl font-semibold text-gradient-corevo">
-                iOS &amp; Android
+              <p className="text-3xl font-semibold text-gradient-corevo">1</p>
+              <p className="text-xs text-slate-500">
+                plataforma completa em produção
               </p>
-              <p className="text-xs text-slate-500">multiplataforma</p>
             </div>
-            <div className="h-10 w-px bg-white/10 hidden sm:block" />
-            <div className="text-center">
-              <p className="text-3xl font-semibold text-white">100%</p>
-              <p className="text-xs text-slate-500">foco em valor real</p>
+            <div className="hidden h-10 w-px bg-white/10 sm:block" />
+            <div className="max-w-[11rem] text-center">
+              <p className="text-lg font-semibold leading-snug text-white sm:text-xl">
+                Mobile · Web · Painel
+              </p>
+              <p className="text-xs text-slate-500">escopo típico de entrega</p>
             </div>
           </div>
         </motion.div>
         <p className="mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed text-slate-500">
-          Simplicidade, performance e propósito — para navegar o digital com
-          confiança e agilidade.
+          Software próprio e projetos sob medida — do aplicativo ao painel que
+          administra a operação.
         </p>
       </div>
     </section>

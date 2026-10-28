@@ -5,23 +5,23 @@ import { cn } from "@/lib/cn";
 
 const items = [
   {
-    title: "Experiência objetiva",
-    desc: "Interfaces e fluxos pensados para reduzir fricção e entregar clareza desde o primeiro uso.",
+    title: "Usabilidade no dia a dia",
+    desc: "Interfaces claras e fluxos diretos, pensados para quem usa o sistema com frequência — equipe ou público final.",
     icon: "◇",
   },
   {
-    title: "Performance & escala",
-    desc: "Arquitetura preparada para crescer sem sacrificar velocidade nem estabilidade.",
+    title: "Performance e estabilidade",
+    desc: "Aplicações rápidas e arquitetura que suporta crescimento de usuários e volume de dados sem perder confiabilidade.",
     icon: "◈",
   },
   {
-    title: "Integração real",
-    desc: "Conectamos contextos do dia a dia — trabalho, finanças, hábitos e bem-estar.",
+    title: "Sistemas integrados",
+    desc: "Site, painel administrativo e mobile no mesmo projeto quando necessário — uma base, menos retrabalho e dados dispersos.",
     icon: "⬡",
   },
   {
-    title: "Estratégia + engenharia",
-    desc: "Menos tempo entre ideia e produto no ar. Execução alinhada a propósito de negócio.",
+    title: "Da ideação à publicação",
+    desc: "Discovery, desenvolvimento e colocação em produção com escopo definido, prazos acordados e entrega publicada.",
     icon: "◎",
   },
 ];
@@ -58,8 +58,8 @@ export function Benefits() {
             Por que a Corevo?
           </h2>
           <p className="mt-4 text-slate-400">
-            Benefícios pensados para uma experiência fluida, segura e acessível
-            — do discovery ao lançamento.
+            Desenvolvemos apps e plataformas com foco em operação real: software
+            que a equipe consegue usar e manter após o lançamento.
           </p>
         </motion.div>
 

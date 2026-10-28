@@ -46,9 +46,9 @@ export function ProjectsTicker() {
               Todos os projetos, uma visão
             </h2>
             <p className="mt-4 text-slate-400">
-              Do imobiliário ao financeiro, de hábitos ao bem-estar animal —
-              produtos distintos, mesma obsessão: valor imediato e menos
-              fricção.
+              Apps publicados, plataformas em operação e projetos em
+              desenvolvimento — cada um atende a um contexto diferente, com
+              software pronto para uso ou evolução contínua.
             </p>
           </div>
           <motion.a
