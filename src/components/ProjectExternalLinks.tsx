@@ -4,12 +4,14 @@ type ProjectExternalLinksProps = {
   websiteUrl?: string;
   instagramUrl?: string;
   className?: string;
+  siteLabel?: string;
 };
 
 export function ProjectExternalLinks({
   websiteUrl,
   instagramUrl,
   className,
+  siteLabel = "Site oficial",
 }: ProjectExternalLinksProps) {
   if (!websiteUrl && !instagramUrl) return null;
 
@@ -20,7 +22,7 @@ export function ProjectExternalLinks({
     <div className={cn("flex flex-wrap gap-3", className)}>
       {websiteUrl ? (
         <a href={websiteUrl} target="_blank" rel="noreferrer" className={linkClass}>
-          Site oficial
+          {siteLabel}
         </a>
       ) : null}
       {instagramUrl ? (

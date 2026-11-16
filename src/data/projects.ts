@@ -36,10 +36,10 @@ import {
 export const projects: Project[] = [
   {
     slug: "converge-gestao",
-    name: "Converge Gestão",
+    name: "Converge",
     tag: "Entidades",
     trend: "+integracao",
-    logoTitle: "Converge Gestão",
+    logoTitle: "Converge",
     logoSubtitle: "Plataforma para entidades e associações",
     summary:
       "Site, sistema administrativo e app num só lugar, para entidades que querem crescer com organização.",

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { TrustBar } from "@/components/TrustBar";
@@ -10,6 +11,11 @@ import { Pricing } from "@/components/Pricing";
 import { FAQ } from "@/components/FAQ";
 import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
+
+export const metadata: Metadata = {
+  title: "Corevo",
+  openGraph: { title: "Corevo" },
+};
 
 export default function HomePage() {
   return (

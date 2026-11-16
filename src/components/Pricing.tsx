@@ -2,10 +2,12 @@
 
 import { motion } from "framer-motion";
 import { cn } from "@/lib/cn";
+import { useLanguage } from "@/components/LanguageProvider";
 import { useSiteContent } from "@/components/SiteContentProvider";
 
 export function Pricing() {
   const { contact } = useSiteContent();
+  const { m } = useLanguage();
 
   return (
     <section id="planos" className="py-20 lg:py-28">
@@ -41,7 +43,7 @@ export function Pricing() {
             >
               {index === 0 && (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-corevo px-3 py-1 text-xs font-semibold text-white">
-                  Mais comum
+                  {m.mostCommon}
                 </span>
               )}
               <h3 className="text-xl font-semibold text-white">{topic.name}</h3>

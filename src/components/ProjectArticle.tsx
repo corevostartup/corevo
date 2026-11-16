@@ -1,0 +1,175 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { CTA } from "@/components/CTA";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { ProjectExternalLinks } from "@/components/ProjectExternalLinks";
+import { useLanguage } from "@/components/LanguageProvider";
+import type { Project } from "@/data/projects";
+
+export function ProjectArticle({ project }: { project: Project }) {
+  const { m } = useLanguage();
+
+  return (
+    <>
+      <Header />
+      <main className="pt-28 sm:pt-32">
+        <section className="pb-16">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            <Link
+              href="/#projetos"
+              className="inline-flex rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-slate-300 transition-colors hover:text-white"
+            >
+              ← {m.backToProjects}
+            </Link>
+
+            <div className="mt-8 rounded-3xl border border-white/[0.08] bg-white/[0.03] p-8 sm:p-10">
+              <span className="rounded-full bg-indigo-500/20 px-3 py-1 text-xs font-medium uppercase tracking-wider text-indigo-300">
+                {m.tags[project.tag] ?? project.tag}
+              </span>
+              <h1 className="mt-5 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+                {project.name}
+              </h1>
+              {!project.logo && project.logoSubtitle ? (
+                <p className="mt-3 max-w-2xl text-lg text-slate-400">{project.logoSubtitle}</p>
+              ) : null}
+              {project.logo ? (
+                <div className="mt-6 flex items-center gap-4 rounded-2xl border border-white/[0.08] bg-white/[0.02] p-4 sm:max-w-md">
+                  <div className="relative h-20 w-20 shrink-0">
+                    <Image
+                      src={project.logo}
+                      alt={`${m.logoOf} ${project.name}`}
+                      fill
+                      className={`object-contain ${
+                        project.disableLogoBlend ? "" : "mix-blend-screen"
+                      } ${
+                        project.iosIconStyle
+                          ? project.iconWithoutWhiteFrame
+                            ? "rounded-[22%] object-cover"
+                            : "rounded-[22%] bg-white object-cover p-0.5"
+                          : ""
+                      }`}
+                      priority
+                    />
+                  </div>
+                  <div>
+                    <p className="text-lg font-semibold tracking-tight text-white">
+                      {project.logoTitle ?? project.name}
+                    </p>
+                    {project.logoSubtitle ? (
+                      <p className="text-sm text-slate-400">{project.logoSubtitle}</p>
+                    ) : null}
+                  </div>
+                </div>
+              ) : null}
+              {(project.websiteUrl ||
+                project.instagramUrl ||
+                project.appStoreUrl ||
+                project.playStoreUrl) && (
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <ProjectExternalLinks
+                    websiteUrl={project.websiteUrl}
+                    instagramUrl={project.instagramUrl}
+                    siteLabel={m.officialSite}
+                  />
+                  {project.appStoreUrl ? (
+                    <a
+                      href={project.appStoreUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center justify-center rounded-full bg-gradient-corevo px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition-all hover:brightness-110"
+                    >
+                      {m.appStore}
+                    </a>
+                  ) : null}
+                  {project.playStoreUrl ? (
+                    <a
+                      href={project.playStoreUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/[0.08] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:border-white/35 hover:bg-white/[0.14]"
+                    >
+                      {m.playStore}
+                    </a>
+                  ) : null}
+                </div>
+              )}
+              <p className="mt-6 max-w-3xl text-lg text-slate-300">{project.summary}</p>
+              <p className="mt-5 max-w-3xl leading-relaxed text-slate-400">{project.description}</p>
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-5">
+                  <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-300">
+                    {m.highlights}
+                  </h2>
+                  <ul className="mt-3 space-y-2">
+                    {project.highlights.map((item) => (
+                      <li key={item} className="text-sm text-slate-400">
+                        • {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-5">
+                  <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-300">
+                    {m.platform}
+                  </h2>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {project.platforms.map((platform) => (
+                      <span
+                        key={platform}
+                        className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-slate-300"
+                      >
+                        {platform}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              {project.sections?.length ? (
+                <div className="mt-10 space-y-6 border-t border-white/[0.08] pt-10">
+                  {project.sections.map((section) => (
+                    <div
+                      key={section.title}
+                      className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6 sm:p-7"
+                    >
+                      <h2 className="text-lg font-semibold tracking-tight text-white">
+                        {section.title}
+                      </h2>
+                      {section.paragraphs?.map((paragraph) => (
+                        <p
+                          key={paragraph}
+                          className="mt-3 text-sm leading-relaxed text-slate-400 sm:text-base"
+                        >
+                          {paragraph}
+                        </p>
+                      ))}
+                      {section.bullets?.length ? (
+                        <ul className="mt-3 space-y-2">
+                          {section.bullets.map((item) => (
+                            <li key={item} className="text-sm leading-relaxed text-slate-400">
+                              • {item}
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
+                    </div>
+                  ))}
+                  <a
+                    href="/#contato"
+                    className="inline-flex rounded-full bg-gradient-corevo px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition-all hover:brightness-110"
+                  >
+                    {m.bookDemo}
+                  </a>
+                </div>
+              ) : null}
+            </div>
+          </div>
+        </section>
+        <CTA />
+      </main>
+      <Footer />
+    </>
+  );
+}

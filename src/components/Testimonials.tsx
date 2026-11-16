@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { useLanguage } from "@/components/LanguageProvider";
 import { useSiteContent } from "@/components/SiteContentProvider";
 
 const portraits = [
@@ -13,6 +14,7 @@ const portraits = [
 
 export function Testimonials() {
   const { testimonials } = useSiteContent();
+  const { m } = useLanguage();
   const slides = testimonials.items;
   const [i, setI] = useState(0);
   const prev = () => setI((v) => (v === 0 ? slides.length - 1 : v - 1));
@@ -80,14 +82,14 @@ export function Testimonials() {
                   onClick={prev}
                   className="rounded-full border border-white/15 px-4 py-2 text-sm text-white transition-colors hover:bg-white/10"
                 >
-                  Anterior
+                  {m.previous}
                 </button>
                 <button
                   type="button"
                   onClick={next}
                   className="rounded-full border border-white/15 px-4 py-2 text-sm text-white transition-colors hover:bg-white/10"
                 >
-                  Próximo
+                  {m.next}
                 </button>
               </div>
             </div>

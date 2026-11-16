@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cormorant_Garamond, Geist, Geist_Mono } from "next/font/google";
+import { headers } from "next/headers";
+import { LanguageProvider } from "@/components/LanguageProvider";
 import { SiteContentProvider } from "@/components/SiteContentProvider";
+import type { Locale } from "@/i18n/locale";
 import { readSiteContent } from "@/lib/site-content";
 import "./globals.css";
 
@@ -13,6 +16,13 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const locusSerif = Cormorant_Garamond({
+  variable: "--font-locus",
+  subsets: ["latin"],
+  weight: "500",
   display: "swap",
 });
 
@@ -46,19 +56,24 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headerStore = await headers();
+  const locale: Locale = headerStore.get("x-corevo-locale") === "en" ? "en" : "pt";
+
   return (
-    <html lang="pt-BR" className="dark">
+    <html lang={locale === "en" ? "en" : "pt-BR"} className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} ${locusSerif.variable} font-sans min-h-screen`}
       >
         <div className="pointer-events-none fixed inset-0 -z-10 bg-mesh" />
         <div className="pointer-events-none fixed inset-0 -z-10 bg-grid-fine opacity-60" />
-        <SiteContentProvider content={readSiteContent()}>{children}</SiteContentProvider>
+        <SiteContentProvider content={readSiteContent()}>
+          <LanguageProvider initialLocale={locale}>{children}</LanguageProvider>
+        </SiteContentProvider>
       </body>
     </html>
   );

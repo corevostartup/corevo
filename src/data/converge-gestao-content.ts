@@ -5,7 +5,7 @@ type ConvergeSection = {
 };
 
 export const convergeGestaoMeta = {
-  title: "Converge Gestão | Plataforma para entidades e associações | Corevo",
+  title: "Converge | Plataforma para entidades e associações | Corevo",
   description:
     "Site, sistema administrativo e app integrados para associações, CDLs e sindicatos. Eventos, pagamentos, credenciamento e certificados num só lugar.",
 };
@@ -28,7 +28,7 @@ export const convergeGestaoSections: ConvergeSection[] = [
   {
     title: "A solução",
     paragraphs: [
-      "Converge Gestão junta site institucional, painel administrativo, app e integrações numa plataforma única. Um login, uma base de dados, uma equipe no controle.",
+      "Converge junta site institucional, painel administrativo, app e integrações numa plataforma única. Um login, uma base de dados, uma equipe no controle.",
     ],
     bullets: [
       "Site institucional: portal público moderno, rápido e editável pelo administrador",
@@ -158,13 +158,13 @@ export const convergeGestaoSections: ConvergeSection[] = [
   {
     title: "Sobre a Corevo",
     paragraphs: [
-      "A Corevo é a startup responsável pelo desenvolvimento do Converge Gestão, com foco em transformação digital para entidades e associações, produto validado em operação real e implantação acompanhada.",
+      "A Corevo é a startup responsável pelo desenvolvimento do Converge, com foco em transformação digital para entidades e associações, produto validado em operação real e implantação acompanhada.",
     ],
   },
   {
     title: "Demonstração",
     paragraphs: [
-      "Leve sua entidade para o próximo nível. Agende uma demonstração do Converge Gestão pelo contato no site da Corevo.",
+      "Leve sua entidade para o próximo nível. Agende uma demonstração do Converge pelo contato no site da Corevo.",
     ],
   },
 ];
