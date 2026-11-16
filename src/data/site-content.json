@@ -1,0 +1,189 @@
+{
+  "hero": {
+    "image": "/hero-building.jpg",
+    "eyebrow": "Tecnologia · apps e plataformas",
+    "titleBefore": "Produtos digitais: do ",
+    "titleAccent": "aplicativo mobile",
+    "titleAfter": " ao painel de gestão da operação.",
+    "description": "A Corevo é uma startup de tecnologia que desenvolve e opera software próprio — incluindo Locus, PINEE e Converge Gestão — e realiza projetos sob medida alinhados à operação do cliente. Nossas soluções cobrem mobile, desktop e web, com interfaces objetivas e fluxos consistentes, pensados para uso contínuo por equipes e usuários finais.",
+    "ctaLabel": "Ver projetos",
+    "ctaHref": "#projetos"
+  },
+  "trust": {
+    "label": "Portfólio Corevo",
+    "stat1Value": "4",
+    "stat1Label": "apps na App Store",
+    "stat2Value": "1",
+    "stat2Label": "plataforma completa em produção",
+    "stat3Value": "Mobile · Web · Painel",
+    "stat3Label": "escopo típico de entrega",
+    "note": "Software próprio e projetos sob medida — do aplicativo ao painel que administra a operação."
+  },
+  "benefits": {
+    "title": "Por que a Corevo?",
+    "intro": "Desenvolvemos apps e plataformas com foco em operação real: software que a equipe consegue usar e manter após o lançamento.",
+    "items": [
+      {
+        "title": "Usabilidade no dia a dia",
+        "desc": "Interfaces claras e fluxos diretos, pensados para quem usa o sistema com frequência — equipe ou público final."
+      },
+      {
+        "title": "Performance e estabilidade",
+        "desc": "Aplicações rápidas e arquitetura que suporta crescimento de usuários e volume de dados sem perder confiabilidade."
+      },
+      {
+        "title": "Sistemas integrados",
+        "desc": "Site, painel administrativo e mobile no mesmo projeto quando necessário — uma base, menos retrabalho e dados dispersos."
+      },
+      {
+        "title": "Da ideação à publicação",
+        "desc": "Discovery, desenvolvimento e colocação em produção com escopo definido, prazos acordados e entrega publicada."
+      }
+    ]
+  },
+  "method": {
+    "title": "Nosso Método",
+    "intro": "Uma forma simples, rápida e consistente de ir da ideia ao produto — sem perder a essência no caminho.",
+    "ctaLabel": "Criar com a Corevo",
+    "ctaHref": "#contato",
+    "steps": [
+      {
+        "title": "Alinhar visão",
+        "desc": "Entendemos problema, público e resultado esperado — tecnologia a serviço de propósito."
+      },
+      {
+        "title": "Prototipar e validar",
+        "desc": "Ciclos curtos: MVP, feedback, iteração. Menos suposição, mais evidência."
+      },
+      {
+        "title": "Lançar e evoluir",
+        "desc": "Produto no ar, métricas claras e roadmap contínuo para escalar com segurança."
+      }
+    ]
+  },
+  "essence": {
+    "title": "Nossa essência",
+    "body": "Somos uma startup de software: desenvolvemos apps e plataformas para empresas e entidades que precisam organizar operação, atendimento e presença digital — com entrega publicada e acompanhamento depois do lançamento.",
+    "points": [
+      "Entender o processo do cliente antes de definir escopo",
+      "Construir mobile, web e painel administrativo quando fizer sentido",
+      "Publicar, medir e evoluir — não entregar e desaparecer"
+    ],
+    "highlight": "Software útil no dia a dia das equipes — esse é o critério.",
+    "philosophyTitle": "Filosofia",
+    "philosophyBody": "A filosofia da Corevo e baseada em construcao inteligente de solucoes que conectam tecnologia, pessoas e negocios de forma pratica e escalavel, com foco em impacto real e sem complexidade desnecessaria.",
+    "principles": [
+      {
+        "title": "1. Simplicidade estrategica",
+        "desc": "Criar produtos diretos, intuitivos e eficientes, eliminando o excesso e focando no que realmente gera valor."
+      },
+      {
+        "title": "2. Execucao acelerada com inteligencia",
+        "desc": "Transformar ideias em solucoes reais rapidamente, usando tecnologia e IA para validar, lancar e evoluir produtos em alta velocidade."
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "Quem já evoluiu com a gente",
+    "intro": "Uma comunidade em crescimento que escolhe propósito, segurança de entrega e design premium.",
+    "items": [
+      {
+        "quote": "A Corevo entrega produto com clareza e ritmo. Da estratégia ao lançamento, a comunicação foi objetiva e o resultado, acima do esperado.",
+        "name": "Marina V.",
+        "role": "Product Lead",
+        "org": "Scale-up de serviços"
+      },
+      {
+        "quote": "Menos enrolação, mais execução. O time entende negócio e tecnologia — isso encurta muito o caminho entre ideia e app nas lojas.",
+        "name": "Ricardo T.",
+        "role": "Founder",
+        "org": "Healthtech"
+      },
+      {
+        "quote": "Design limpo, performance sólida e visão de longo prazo. Exatamente o parceiro que queríamos para evoluir nosso ecossistema digital.",
+        "name": "Ana L.",
+        "role": "CMO",
+        "org": "Retail digital"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Fale com a Corevo",
+    "intro": "Conte o que você precisa. Respondemos com próximo passo claro — sem pacote genérico nem tabela de preço fixa no site.",
+    "footnote": "Todos os caminhos levam ao contato abaixo. Escolha o assunto e use o e-mail que preferir — comercial ou suporte.",
+    "cards": [
+      {
+        "name": "Projeto sob medida",
+        "desc": "Você precisa de app, site ou painel para a operação da empresa.",
+        "points": [
+          "Conte o contexto e o processo que quer digitalizar",
+          "Alinhamos escopo, prazo e forma de entrega",
+          "Desenvolvimento com acompanhamento até a publicação"
+        ],
+        "cta": "Iniciar conversa"
+      },
+      {
+        "name": "Plataforma para entidade",
+        "desc": "Associação, CDL, sindicato ou entidade com associados e eventos.",
+        "points": [
+          "Site, painel e mobile integrados",
+          "Eventos, cadastros, pagamentos e credenciamento",
+          "Demonstração do que já entregamos em produção"
+        ],
+        "cta": "Agendar demonstração"
+      },
+      {
+        "name": "Nossos produtos",
+        "desc": "Dúvidas sobre apps do portfólio, parceria ou suporte a usuários.",
+        "points": [
+          "Informações sobre apps publicados",
+          "Canal para suporte e feedback",
+          "Oportunidades de parceria comercial"
+        ],
+        "cta": "Enviar mensagem"
+      }
+    ]
+  },
+  "faq": {
+    "title": "Perguntas frequentes",
+    "intro": "Do posicionamento ao dia a dia — tudo o que você precisa saber antes de evoluir com a Corevo.",
+    "items": [
+      {
+        "q": "O que é a Corevo?",
+        "a": "Somos uma startup de tecnologia focada em conectar inteligência, pessoas e negócios. Criamos ecossistemas digitais com propósito — não apenas telas, mas produtos que resolvem problemas reais."
+      },
+      {
+        "q": "Quais tecnologias vocês usam?",
+        "a": "Trabalhamos com stack moderna: React, Next.js, plataformas nativas e híbridas para mobile, APIs bem definidas e infraestrutura preparada para escala. A escolha é sempre adequada ao produto e ao tempo de mercado."
+      },
+      {
+        "q": "Vocês fazem apenas apps?",
+        "a": "Apps são parte do que fazemos, mas nosso escopo inclui estratégia de produto, integrações, backends e experiências web completas — sempre com foco em valor e simplicidade."
+      },
+      {
+        "q": "Como é o processo de contratação?",
+        "a": "Começamos com uma conversa de alinhamento, seguimos para proposta clara com escopo e investimento, e então iniciamos ciclos de entrega com transparência de progresso."
+      },
+      {
+        "q": "Atendem fora do Brasil?",
+        "a": "Sim. Trabalhamos com equipes remotas e parceiros internacionais. Idioma de projeto: português ou inglês, conforme necessidade."
+      },
+      {
+        "q": "Como falar com suporte?",
+        "a": "Para projetos e parcerias: corevostartup@gmail.com. Para suporte aos produtos: supportcorevo@gmail.com."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Pronto para evoluir com propósito?",
+    "body": "A verdadeira inovação acontece quando talentos diferentes se conectam em um único objetivo. Vamos conversar.",
+    "primaryLabel": "corevostartup@gmail.com",
+    "primaryHref": "mailto:corevostartup@gmail.com",
+    "secondaryLabel": "Suporte: supportcorevo@gmail.com",
+    "secondaryHref": "mailto:supportcorevo@gmail.com"
+  },
+  "footer": {
+    "blurb": "Seguro, rápido e consistente. A Corevo torna a evolução digital objetiva — com propósito e engenharia."
+  },
+  "news": []
+}

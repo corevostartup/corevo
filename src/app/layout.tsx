@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { SiteContentProvider } from "@/components/SiteContentProvider";
+import { readSiteContent } from "@/lib/site-content";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -36,8 +38,10 @@ export const metadata: Metadata = {
   },
 };
 
+export const dynamic = "force-dynamic";
+
 export const viewport: Viewport = {
-  themeColor: "#050810",
+  themeColor: "#0E1015",
   width: "device-width",
   initialScale: 1,
 };
@@ -54,7 +58,7 @@ export default function RootLayout({
       >
         <div className="pointer-events-none fixed inset-0 -z-10 bg-mesh" />
         <div className="pointer-events-none fixed inset-0 -z-10 bg-grid-fine opacity-60" />
-        {children}
+        <SiteContentProvider content={readSiteContent()}>{children}</SiteContentProvider>
       </body>
     </html>
   );

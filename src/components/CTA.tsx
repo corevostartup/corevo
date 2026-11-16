@@ -1,8 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useSiteContent } from "@/components/SiteContentProvider";
 
 export function CTA() {
+  const { cta } = useSiteContent();
+
   return (
     <section id="contato" className="pb-20 lg:pb-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -17,28 +20,27 @@ export function CTA() {
 
           <div className="relative">
             <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Pronto para evoluir com propósito?
+              {cta.title}
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-slate-300">
-              A verdadeira inovação acontece quando talentos diferentes se
-              conectam em um único objetivo. Vamos conversar.
+              {cta.body}
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <motion.a
-                href="mailto:corevostartup@gmail.com"
+                href={cta.primaryHref}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex w-full items-center justify-center rounded-full bg-white px-8 py-4 text-base font-semibold text-slate-900 shadow-xl sm:w-auto"
               >
-                corevostartup@gmail.com
+                {cta.primaryLabel}
               </motion.a>
               <motion.a
-                href="mailto:supportcorevo@gmail.com"
+                href={cta.secondaryHref}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex w-full items-center justify-center rounded-full border border-white/25 bg-white/10 px-8 py-4 text-base font-medium text-white backdrop-blur sm:w-auto"
               >
-                Suporte: supportcorevo@gmail.com
+                {cta.secondaryLabel}
               </motion.a>
             </div>
           </div>

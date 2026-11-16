@@ -3,11 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --bg-deep: #050810;
-  --bg-surface: #0c1222;
-  --border-subtle: rgba(148, 163, 184, 0.12);
-  --glow-blue: rgba(37, 99, 235, 0.45);
-  --glow-purple: rgba(147, 51, 234, 0.35);
+  /* PALETA-TESTE-COREVO — rollback: valores anteriores abaixo
+     --bg-deep: #050810;
+     --bg-surface: #0c1222;
+     --border-subtle: rgba(148, 163, 184, 0.12);
+     --glow-blue: rgba(37, 99, 235, 0.45);
+     --glow-purple: rgba(147, 51, 234, 0.35);
+  */
+  --bg-deep: #0e1015;
+  --bg-surface: #17191c;
+  --border-subtle: rgba(146, 157, 167, 0.16);
+  --glow-blue: rgba(36, 107, 255, 0.45);
+  --glow-purple: rgba(146, 157, 167, 0.28);
 }
 
 html {
@@ -24,7 +31,9 @@ body {
 
 @layer utilities {
   .text-gradient-corevo {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400;
+    /* anterior: bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 */
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(90deg, #9ebeff 0%, #246bff 100%);
   }
 
   .glass-panel {
@@ -42,10 +51,10 @@ body {
   background-size: 48px 48px;
   background-image: linear-gradient(
       to right,
-      rgba(148, 163, 184, 0.04) 1px,
+      rgba(146, 157, 167, 0.05) 1px,
       transparent 1px
     ),
-    linear-gradient(to bottom, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
+    linear-gradient(to bottom, rgba(146, 157, 167, 0.05) 1px, transparent 1px);
 }
 
 @keyframes ticker-left {

@@ -3,35 +3,10 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/cn";
-
-const faqs = [
-  {
-    q: "O que é a Corevo?",
-    a: "Somos uma startup de tecnologia focada em conectar inteligência, pessoas e negócios. Criamos ecossistemas digitais com propósito — não apenas telas, mas produtos que resolvem problemas reais.",
-  },
-  {
-    q: "Quais tecnologias vocês usam?",
-    a: "Trabalhamos com stack moderna: React, Next.js, plataformas nativas e híbridas para mobile, APIs bem definidas e infraestrutura preparada para escala. A escolha é sempre adequada ao produto e ao tempo de mercado.",
-  },
-  {
-    q: "Vocês fazem apenas apps?",
-    a: "Apps são parte do que fazemos, mas nosso escopo inclui estratégia de produto, integrações, backends e experiências web completas — sempre com foco em valor e simplicidade.",
-  },
-  {
-    q: "Como é o processo de contratação?",
-    a: "Começamos com uma conversa de alinhamento, seguimos para proposta clara com escopo e investimento, e então iniciamos ciclos de entrega com transparência de progresso.",
-  },
-  {
-    q: "Atendem fora do Brasil?",
-    a: "Sim. Trabalhamos com equipes remotas e parceiros internacionais. Idioma de projeto: português ou inglês, conforme necessidade.",
-  },
-  {
-    q: "Como falar com suporte?",
-    a: "Para projetos e parcerias: corevostartup@gmail.com. Para suporte aos produtos: supportcorevo@gmail.com.",
-  },
-];
+import { useSiteContent } from "@/components/SiteContentProvider";
 
 export function FAQ() {
+  const { faq } = useSiteContent();
   const [open, setOpen] = useState<number | null>(0);
 
   return (
@@ -44,11 +19,10 @@ export function FAQ() {
           className="text-center"
         >
           <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            Perguntas frequentes
+            {faq.title}
           </h2>
           <p className="mt-4 text-slate-400">
-            Do posicionamento ao dia a dia — tudo o que você precisa saber
-            antes de evoluir com a Corevo.
+            {faq.intro}
           </p>
         </motion.div>
 
@@ -58,7 +32,7 @@ export function FAQ() {
           viewport={{ once: true }}
           className="mt-12 space-y-3"
         >
-          {faqs.map((item, index) => {
+          {faq.items.map((item, index) => {
             const isOpen = open === index;
             return (
               <div

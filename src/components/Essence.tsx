@@ -1,8 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useSiteContent } from "@/components/SiteContentProvider";
 
 export function Essence() {
+  const { essence } = useSiteContent();
+
   return (
     <section className="py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -13,20 +16,13 @@ export function Essence() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Nossa essência
+              {essence.title}
             </h2>
             <p className="mt-4 text-slate-400">
-              Somos uma startup de software: desenvolvemos apps e plataformas
-              para empresas e entidades que precisam organizar operação,
-              atendimento e presença digital — com entrega publicada e
-              acompanhamento depois do lançamento.
+              {essence.body}
             </p>
             <ul className="mt-8 space-y-4">
-              {[
-                "Entender o processo do cliente antes de definir escopo",
-                "Construir mobile, web e painel administrativo quando fizer sentido",
-                "Publicar, medir e evoluir — não entregar e desaparecer",
-              ].map((line) => (
+              {essence.points.map((line) => (
                 <li
                   key={line}
                   className="flex items-center gap-3 text-slate-200"
@@ -37,7 +33,7 @@ export function Essence() {
               ))}
             </ul>
             <p className="mt-8 text-lg font-medium text-gradient-corevo">
-              Software útil no dia a dia das equipes — esse é o critério.
+              {essence.highlight}
             </p>
           </motion.div>
 
@@ -50,34 +46,27 @@ export function Essence() {
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-500/10 via-transparent to-purple-500/10" />
             <div className="relative">
               <h3 className="text-xl font-semibold text-white">
-                Filosofia
+                {essence.philosophyTitle}
               </h3>
               <p className="mt-4 text-slate-400">
-                A filosofia da Corevo e baseada em construcao inteligente de
-                solucoes que conectam tecnologia, pessoas e negocios de forma
-                pratica e escalavel, com foco em impacto real e sem
-                complexidade desnecessaria.
+                {essence.philosophyBody}
               </p>
               <div className="mt-8 space-y-4">
-                <div className="rounded-2xl border border-blue-500/20 bg-blue-500/5 p-4">
-                  <p className="text-sm font-semibold text-blue-300">
-                    1. Simplicidade estrategica
-                  </p>
-                  <p className="mt-1 text-xs text-slate-400">
-                    Criar produtos diretos, intuitivos e eficientes, eliminando
-                    o excesso e focando no que realmente gera valor.
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-purple-500/20 bg-purple-500/5 p-4">
-                  <p className="text-sm font-semibold text-purple-300">
-                    2. Execucao acelerada com inteligencia
-                  </p>
-                  <p className="mt-1 text-xs text-slate-400">
-                    Transformar ideias em solucoes reais rapidamente, usando
-                    tecnologia e IA para validar, lancar e evoluir produtos em
-                    alta velocidade.
-                  </p>
-                </div>
+                {essence.principles.map((principle, index) => (
+                  <div
+                    key={`${principle.title}-${index}`}
+                    className={
+                      index % 2 === 0
+                        ? "rounded-2xl border border-blue-500/20 bg-blue-500/5 p-4"
+                        : "rounded-2xl border border-purple-500/20 bg-purple-500/5 p-4"
+                    }
+                  >
+                    <p className={index % 2 === 0 ? "text-sm font-semibold text-blue-300" : "text-sm font-semibold text-purple-300"}>
+                      {principle.title}
+                    </p>
+                    <p className="mt-1 text-xs text-slate-400">{principle.desc}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </motion.div>

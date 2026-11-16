@@ -3,42 +3,23 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { useSiteContent } from "@/components/SiteContentProvider";
 
-const slides = [
-  {
-    quote:
-      "A Corevo entrega produto com clareza e ritmo. Da estratégia ao lançamento, a comunicação foi objetiva e o resultado, acima do esperado.",
-    name: "Marina V.",
-    role: "Product Lead",
-    org: "Scale-up de serviços",
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop",
-  },
-  {
-    quote:
-      "Menos enrolação, mais execução. O time entende negócio e tecnologia — isso encurta muito o caminho entre ideia e app nas lojas.",
-    name: "Ricardo T.",
-    role: "Founder",
-    org: "Healthtech",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop",
-  },
-  {
-    quote:
-      "Design limpo, performance sólida e visão de longo prazo. Exatamente o parceiro que queríamos para evoluir nosso ecossistema digital.",
-    name: "Ana L.",
-    role: "CMO",
-    org: "Retail digital",
-    image:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop",
-  },
+const portraits = [
+  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop",
+  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop",
+  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop",
 ];
 
 export function Testimonials() {
+  const { testimonials } = useSiteContent();
+  const slides = testimonials.items;
   const [i, setI] = useState(0);
   const prev = () => setI((v) => (v === 0 ? slides.length - 1 : v - 1));
   const next = () => setI((v) => (v === slides.length - 1 ? 0 : v + 1));
-  const current = slides[i];
+  const index = slides.length === 0 ? 0 : i % slides.length;
+  const current = slides[index];
+  if (!current) return null;
 
   return (
     <section className="border-y border-white/[0.06] bg-white/[0.02] py-20 lg:py-28">
@@ -50,11 +31,10 @@ export function Testimonials() {
           className="mx-auto max-w-2xl text-center"
         >
           <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            Quem já evoluiu com a gente
+            {testimonials.title}
           </h2>
           <p className="mt-4 text-slate-400">
-            Uma comunidade em crescimento que escolhe propósito, segurança de
-            entrega e design premium.
+            {testimonials.intro}
           </p>
         </motion.div>
 
@@ -71,7 +51,7 @@ export function Testimonials() {
               >
                 <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl ring-2 ring-indigo-500/30">
                   <Image
-                    src={current.image}
+                    src={portraits[index % portraits.length]}
                     alt=""
                     width={80}
                     height={80}
@@ -92,7 +72,7 @@ export function Testimonials() {
 
             <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-6">
               <span className="text-sm text-slate-500">
-                {i + 1} / {slides.length}
+                {index + 1} / {slides.length}
               </span>
               <div className="flex gap-2">
                 <button

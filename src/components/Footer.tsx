@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useSiteContent } from "@/components/SiteContentProvider";
 
 const links = [
   { href: "#o-que-fazemos", label: "O que fazemos" },
@@ -15,6 +16,7 @@ const links = [
 
 export function Footer() {
   const year = new Date().getFullYear();
+  const { footer } = useSiteContent();
   const pathname = usePathname();
   const isHome = pathname === "/";
   const toSection = (hash: string) => (isHome ? hash : `/${hash}`);
@@ -41,8 +43,7 @@ export function Footer() {
               COREVO
             </div>
             <p className="mt-4 max-w-xs text-sm text-slate-500">
-              Seguro, rápido e consistente. A Corevo torna a evolução digital
-              objetiva — com propósito e engenharia.
+              {footer.blurb}
             </p>
           </div>
           <div>

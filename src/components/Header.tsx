@@ -40,22 +40,24 @@ export function Header() {
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight text-white">
+        <Link href="/" className="flex items-center gap-2.5" aria-label="COREVO — Core Evolution">
           <span className="relative h-9 w-9 shrink-0">
             <Image
               src="/corevo-logo.png"
-              alt="Logo da Corevo"
+              alt=""
               fill
               className="object-contain"
               priority
             />
           </span>
-          <span className="text-lg">
-            COREVO
-            <span className="ml-1 text-xs font-normal text-slate-400">
-              Core Evolution
-            </span>
-          </span>
+          <Image
+            src="/corevo-wordmark.png"
+            alt=""
+            width={973}
+            height={169}
+            priority
+            className="h-[19.6px] w-auto sm:h-[22.4px]"
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
