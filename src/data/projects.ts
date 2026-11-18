@@ -63,21 +63,24 @@ export const projects: Project[] = [
     trend: "+foco",
     logo: "/locus-logo.png",
     logoTitle: "Locus",
-    logoSubtitle: "Plataforma imobiliaria",
+    logoSubtitle: "Proptech",
     iosIconStyle: true,
     appStoreUrl: "https://apps.apple.com/br/app/locus-imob/id6759474553",
     websiteUrl: "https://locusimob.com",
     instagramUrl:
       "https://www.instagram.com/locusimob?igsh=cGV1eTVyemVvZzU3&utm_source=qr",
-    summary: "Plataforma imobiliaria com foco em localizacao e preco.",
+    summary: "Proptech de descoberta imobiliária com o mapa no centro da experiência.",
     description:
-      "A Locus simplifica a descoberta de oportunidades imobiliarias com experiencia visual direta, filtros eficientes e tomada de decisao sem friccao.",
+      "O Locus transforma a busca de imóveis em uma experiência visual, centrada em localização e preço, e abre um canal complementar para quem anuncia.",
     highlights: [
-      "Busca orientada por localizacao",
-      "Comparacao de preco por regiao",
-      "Experiencia limpa e objetiva",
+      "Descoberta a partir do mapa",
+      "Localização e preço em destaque",
+      "Contato direto com quem anuncia",
     ],
     platforms: ["iOS"],
+    metaTitle: "Locus | Proptech",
+    metaDescription:
+      "O Locus é uma proptech que coloca o mapa no centro da descoberta imobiliária. Localização, preço e contato direto — e uma tese de negócio para anunciantes e investidores.",
   },
   {
     slug: "pinee",
