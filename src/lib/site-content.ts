@@ -1,5 +1,6 @@
 import { readFileSync, writeFileSync, mkdirSync } from "fs";
 import path from "path";
+import { NEWS_LIMITS } from "@/data/news";
 import defaults from "@/data/site-content.json";
 
 export type TextPair = { title: string; desc: string };
@@ -68,11 +69,12 @@ export type SiteContent = {
 
 export type NewsItem = {
   id: string;
+  theme: string;
   title: string;
   summary: string;
   body: string;
   date: string;
-  status: "rascunho" | "pronta";
+  hidden: boolean;
 };
 
 const FILE = path.join(process.cwd(), "src/data/site-content.json");
@@ -195,14 +197,20 @@ export function normalizeSiteContent(input: unknown): SiteContent {
       secondaryHref: text(cta.secondaryHref, 240, base.cta.secondaryHref),
     },
     footer: { blurb: text(footer.blurb, 300, base.footer.blurb) },
-    news: (Array.isArray(data.news) ? data.news : []).slice(0, 50).map((item) => ({
-      id: text(item?.id, 80) || crypto.randomUUID(),
-      title: text(item?.title, 180),
-      summary: text(item?.summary, 400),
-      body: text(item?.body, 8000),
-      date: text(item?.date, 20) || new Date().toISOString().slice(0, 10),
-      status: item?.status === "pronta" ? "pronta" : "rascunho",
-    })),
+    news: (Array.isArray(data.news) ? data.news : []).slice(0, 50).map((item) => {
+      const legacy = item as NewsItem & { kind?: string; status?: string };
+      const summary = text(legacy.summary, NEWS_LIMITS.summary);
+      const body = text(legacy.body, NEWS_LIMITS.body);
+      return {
+        id: text(legacy.id, 80) || crypto.randomUUID(),
+        theme: text(legacy.theme || legacy.kind, NEWS_LIMITS.theme),
+        title: text(legacy.title, NEWS_LIMITS.title),
+        summary: summary || text(body, NEWS_LIMITS.summary),
+        body: body || summary,
+        date: text(legacy.date, NEWS_LIMITS.date),
+        hidden: legacy.hidden === true || legacy.status === "rascunho",
+      };
+    }),
   };
 }
 

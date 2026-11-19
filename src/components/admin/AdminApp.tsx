@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useState } from "react";
+import { NEWS_LIMITS } from "@/data/news";
 import type { NewsItem, SiteContent, TextPair } from "@/lib/site-content";
 
 type Tab = "banner" | "areas" | "news";
@@ -121,19 +122,39 @@ function Field({
   value,
   onChange,
   multiline = false,
+  max,
 }: {
   label: string;
   value: string;
   onChange: (value: string) => void;
   multiline?: boolean;
+  max?: number;
 }) {
+  const change = (next: string) => onChange(max ? next.slice(0, max) : next);
   return (
     <label className="block">
-      <span className={labelClass}>{label}</span>
+      <span className="mb-1 flex items-center justify-between gap-3">
+        <span className="text-xs font-medium uppercase tracking-wide text-slate-500">{label}</span>
+        {max ? (
+          <span className={`text-xs ${value.length >= max ? "text-amber-300" : "text-slate-500"}`}>
+            {value.length}/{max}
+          </span>
+        ) : null}
+      </span>
       {multiline ? (
-        <textarea className={`${inputClass} min-h-24`} value={value} onChange={(event) => onChange(event.target.value)} />
+        <textarea
+          className={`${inputClass} min-h-24`}
+          value={value}
+          maxLength={max}
+          onChange={(event) => change(event.target.value)}
+        />
       ) : (
-        <input className={inputClass} value={value} onChange={(event) => onChange(event.target.value)} />
+        <input
+          className={inputClass}
+          value={value}
+          maxLength={max}
+          onChange={(event) => change(event.target.value)}
+        />
       )}
     </label>
   );
@@ -592,18 +613,20 @@ function NewsEditor({
   saving: boolean;
   onSave: (next: SiteContent) => void;
 }) {
-  const [draft, setDraft] = useState<NewsItem>({
+  const emptyDraft = (): NewsItem => ({
     id: "",
+    theme: "",
     title: "",
     summary: "",
     body: "",
-    date: new Date().toISOString().slice(0, 10),
-    status: "rascunho",
+    date: "",
+    hidden: false,
   });
+  const [draft, setDraft] = useState<NewsItem>(emptyDraft);
 
   function upsert(event: FormEvent) {
     event.preventDefault();
-    if (!draft.title.trim()) return;
+    if (!draft.theme.trim() || !draft.title.trim()) return;
     const item = { ...draft, id: draft.id || crypto.randomUUID() };
     const exists = content.news.some((news) => news.id === item.id);
     const news = exists
@@ -611,14 +634,17 @@ function NewsEditor({
       : [item, ...content.news];
     const next = { ...content, news };
     setContent(next);
-    setDraft({
-      id: "",
-      title: "",
-      summary: "",
-      body: "",
-      date: new Date().toISOString().slice(0, 10),
-      status: "rascunho",
-    });
+    setDraft(emptyDraft());
+    onSave(next);
+  }
+
+  function toggleHidden(item: NewsItem) {
+    const next = {
+      ...content,
+      news: content.news.map((news) => (news.id === item.id ? { ...news, hidden: !news.hidden } : news)),
+    };
+    setContent(next);
+    if (draft.id === item.id) setDraft({ ...item, hidden: !item.hidden });
     onSave(next);
   }
 
@@ -627,27 +653,52 @@ function NewsEditor({
       <header>
         <h2 className="text-2xl font-semibold text-white">Notícias</h2>
         <p className="mt-1 text-sm text-slate-400">
-          Cadastre notícias agora. Elas ficam guardadas e ainda não aparecem no site — a publicação entra numa etapa seguinte.
+          As notícias visíveis aparecem na home. Ocultar tira a nota do site sem apagá-la.
         </p>
       </header>
       <form onSubmit={upsert} className="space-y-4 rounded-xl border border-white/10 p-4">
-        <Field label="Título" value={draft.title} onChange={(title) => setDraft({ ...draft, title })} />
-        <Field label="Resumo" value={draft.summary} multiline onChange={(summary) => setDraft({ ...draft, summary })} />
-        <Field label="Texto" value={draft.body} multiline onChange={(body) => setDraft({ ...draft, body })} />
         <div className="grid gap-4 sm:grid-cols-2">
-          <Field label="Data" value={draft.date} onChange={(date) => setDraft({ ...draft, date })} />
-          <label>
-            <span className={labelClass}>Situação</span>
-            <select
-              className={inputClass}
-              value={draft.status}
-              onChange={(event) => setDraft({ ...draft, status: event.target.value as NewsItem["status"] })}
-            >
-              <option value="rascunho">Rascunho</option>
-              <option value="pronta">Pronta para publicar</option>
-            </select>
-          </label>
+          <Field
+            label="Tema"
+            value={draft.theme}
+            max={NEWS_LIMITS.theme}
+            onChange={(theme) => setDraft({ ...draft, theme })}
+          />
+          <Field
+            label="Data"
+            value={draft.date}
+            max={NEWS_LIMITS.date}
+            onChange={(date) => setDraft({ ...draft, date })}
+          />
         </div>
+        <Field
+          label="Título"
+          value={draft.title}
+          max={NEWS_LIMITS.title}
+          onChange={(title) => setDraft({ ...draft, title })}
+        />
+        <Field
+          label="Descrição"
+          value={draft.summary}
+          max={NEWS_LIMITS.summary}
+          multiline
+          onChange={(summary) => setDraft({ ...draft, summary })}
+        />
+        <Field
+          label="Corpo"
+          value={draft.body}
+          max={NEWS_LIMITS.body}
+          multiline
+          onChange={(body) => setDraft({ ...draft, body })}
+        />
+        <label className="flex items-center gap-2 text-sm text-slate-300">
+          <input
+            type="checkbox"
+            checked={draft.hidden}
+            onChange={(event) => setDraft({ ...draft, hidden: event.target.checked })}
+          />
+          Ocultar no site
+        </label>
         <button type="submit" disabled={saving} className="rounded-full bg-gradient-corevo px-5 py-2.5 text-sm font-medium text-white">
           {draft.id ? "Atualizar notícia" : "Adicionar notícia"}
         </button>
@@ -660,10 +711,15 @@ function NewsEditor({
               <p className="font-medium text-white">{item.title}</p>
               <p className="mt-1 text-sm text-slate-400">{item.summary}</p>
               <p className="mt-2 text-xs uppercase tracking-wide text-slate-500">
-                {item.date} · {item.status === "pronta" ? "Pronta para publicar" : "Rascunho"}
+                {item.theme}
+                {item.date ? ` · ${item.date}` : ""}
+                {item.hidden ? " · Oculta" : " · Visível"}
               </p>
             </div>
             <div className="flex shrink-0 gap-3 text-sm">
+              <button type="button" className="text-slate-300 hover:text-white" onClick={() => toggleHidden(item)}>
+                {item.hidden ? "Mostrar" : "Ocultar"}
+              </button>
               <button type="button" className="text-slate-300 hover:text-white" onClick={() => setDraft(item)}>
                 Editar
               </button>
@@ -673,6 +729,7 @@ function NewsEditor({
                 onClick={() => {
                   const next = { ...content, news: content.news.filter((news) => news.id !== item.id) };
                   setContent(next);
+                  if (draft.id === item.id) setDraft(emptyDraft());
                   onSave(next);
                 }}
               >

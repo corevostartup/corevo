@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/components/LanguageProvider";
+import { useSiteContent } from "@/components/SiteContentProvider";
 import { newsCopy } from "@/data/news";
 
 const previewCount = 3;
@@ -26,26 +27,28 @@ function Arrow({ direction }: { direction: "left" | "right" }) {
 export function News() {
   const { locale } = useLanguage();
   const text = newsCopy[locale];
+  const items = useSiteContent().news.filter((item) => !item.hidden);
   const [open, setOpen] = useState(false);
   const [page, setPage] = useState(0);
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
-  const pageCount = Math.ceil(text.items.length / pageSize);
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+  const pageCount = Math.ceil(items.length / pageSize);
   const start = open ? page * pageSize : 0;
   const count = open ? pageSize : previewCount;
-  const visible = text.items.slice(start, start + count);
-  const expanded =
-    expandedIndex !== null && expandedIndex >= start && expandedIndex < start + count;
-  const showArrows = open && text.items.length > pageSize && !expanded;
+  const visible = items.slice(start, start + count);
+  const expanded = expandedId !== null && visible.some((item) => item.id === expandedId);
+  const showArrows = open && items.length > pageSize && !expanded;
 
   const close = () => {
     setOpen(false);
     setPage(0);
-    setExpandedIndex(null);
+    setExpandedId(null);
   };
 
-  const toggleNote = (index: number) => {
-    setExpandedIndex((current) => (current === index ? null : index));
+  const toggleNote = (id: string) => {
+    setExpandedId((current) => (current === id ? null : id));
   };
+
+  if (items.length === 0) return null;
 
   return (
     <section id="notas" className="border-t border-white/[0.06] py-16 lg:py-20">
@@ -69,7 +72,7 @@ export function News() {
               aria-label={text.previous}
               disabled={page === 0}
               onClick={() => {
-                setExpandedIndex(null);
+                setExpandedId(null);
                 setPage((value) => Math.max(0, value - 1));
               }}
               className="absolute left-0 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-[#0E1015] text-slate-200 transition-colors hover:border-white/30 hover:text-white disabled:cursor-default disabled:border-white/10 disabled:text-slate-600"
@@ -79,16 +82,15 @@ export function News() {
           ) : null}
 
           <ul
-            className={`grid gap-4 sm:grid-cols-2 lg:grid-cols-3 ${open && text.items.length > pageSize ? "px-12" : ""}`}
+            className={`grid gap-4 sm:grid-cols-2 lg:grid-cols-3 ${open && items.length > pageSize ? "px-12" : ""}`}
           >
-            {visible.map((item, index) => {
-              const itemIndex = start + index;
-              const isExpanded = expandedIndex === itemIndex;
+            {visible.map((item) => {
+              const isExpanded = expandedId === item.id;
               if (expanded && !isExpanded) return null;
 
               return (
                 <motion.li
-                  key={item.title}
+                  key={item.id}
                   layout
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -101,11 +103,11 @@ export function News() {
                   <button
                     type="button"
                     aria-expanded={isExpanded}
-                    onClick={() => toggleNote(itemIndex)}
+                    onClick={() => toggleNote(item.id)}
                     className="flex h-full min-h-full w-full flex-col rounded-2xl border border-white/[0.08] bg-white/[0.03] px-5 py-5 text-left transition-colors hover:border-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/40"
                   >
                     <p className="flex items-center justify-between gap-3 text-xs text-slate-500">
-                      <span className="uppercase tracking-[0.14em]">{item.kind}</span>
+                      <span className="uppercase tracking-[0.14em]">{item.theme}</span>
                       <span>{item.date}</span>
                     </p>
                     <h3
@@ -116,7 +118,7 @@ export function News() {
                     <p
                       className={`mt-2 leading-relaxed text-slate-400 ${isExpanded ? "max-w-2xl text-base" : "text-sm"}`}
                     >
-                      {item.body}
+                      {isExpanded ? item.body || item.summary : item.summary}
                     </p>
                   </button>
                 </motion.li>
@@ -130,7 +132,7 @@ export function News() {
               aria-label={text.next}
               disabled={page >= pageCount - 1}
               onClick={() => {
-                setExpandedIndex(null);
+                setExpandedId(null);
                 setPage((value) => Math.min(pageCount - 1, value + 1));
               }}
               className="absolute right-0 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-[#0E1015] text-slate-200 transition-colors hover:border-white/30 hover:text-white disabled:cursor-default disabled:border-white/10 disabled:text-slate-600"
@@ -140,12 +142,12 @@ export function News() {
           ) : null}
         </div>
 
-        {text.items.length > previewCount ? (
+        {items.length > previewCount ? (
           <div className="mt-8">
             <button
               type="button"
               onClick={() => {
-                setExpandedIndex(null);
+                setExpandedId(null);
                 if (open) close();
                 else setOpen(true);
               }}

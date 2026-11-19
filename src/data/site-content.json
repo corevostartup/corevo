@@ -185,5 +185,87 @@
   "footer": {
     "blurb": "Seguro, rápido e consistente. A Corevo torna a evolução digital objetiva — com propósito e engenharia."
   },
-  "news": []
+  "news": [
+    {
+      "id": "nota-1",
+      "theme": "Palestra",
+      "title": "Tema de uma palestra",
+      "summary": "Espaço para data, local e o que foi apresentado.",
+      "body": "Espaço para data, local e o que foi apresentado.",
+      "date": "Exemplo",
+      "hidden": true
+    },
+    {
+      "id": "nota-2",
+      "theme": "Evento",
+      "title": "Participação em um evento",
+      "summary": "Espaço para o nome do encontro e o papel da Corevo.",
+      "body": "Espaço para o nome do encontro e o papel da Corevo.",
+      "date": "Exemplo",
+      "hidden": true
+    },
+    {
+      "id": "nota-3",
+      "theme": "Nota",
+      "title": "Uma informação relevante",
+      "summary": "Espaço para um aviso curto sobre a empresa ou um produto.",
+      "body": "Espaço para um aviso curto sobre a empresa ou um produto.",
+      "date": "Exemplo",
+      "hidden": true
+    },
+    {
+      "id": "nota-4",
+      "theme": "Palestra",
+      "title": "Outra fala da equipe",
+      "summary": "Segundo registro, visível ao abrir o restante das notas.",
+      "body": "Segundo registro, visível ao abrir o restante das notas.",
+      "date": "Exemplo",
+      "hidden": true
+    },
+    {
+      "id": "nota-5",
+      "theme": "Internacional",
+      "title": "Corevo estreia no Paraguai",
+      "summary": "Cofundadores representam a startup na Expo Paraguay Brasil 2026.",
+      "body": "A Corevo participou pela primeira vez de um evento internacional ao marcar presença na Expo Paraguay Brasil 2026. A startup foi representada pelos cofundadores Caio Arruda e Cassio Nunes. Durante o evento, a empresa buscou conhecer novos mercados, identificar oportunidades e ampliar conexões estratégicas. Com aplicativos já publicados e novos produtos em desenvolvimento.",
+      "date": "19/11/2026",
+      "hidden": false
+    },
+    {
+      "id": "nota-6",
+      "theme": "Educação",
+      "title": "Corevo palestra na IFBA TechWeek",
+      "summary": "Cássio Nunes apresentou palestra sobre inteligência artificial no IFBA de Paulo ",
+      "body": "O cofundador da Corevo, Cássio Nunes, participou como palestrante da IFBA TechWeek 2026, realizada de 22 a 24 de julho, em Paulo Afonso. Com o tema “IA: A última tecnologia que aprenderemos?”, a apresentação abordou os impactos da inteligência artificial nas carreiras, nos negócios e no desenvolvimento tecnológico. A participação também marcou a contribuição da Corevo para a disseminação do conhecimento e o fortalecimento do ecossistema regional ",
+      "date": "22/07/2026",
+      "hidden": false
+    },
+    {
+      "id": "nota-7",
+      "theme": "Eventos",
+      "title": "Locus na NEON",
+      "summary": "Startup participou com estande e apresentou o aplicativo Locus em Maceió.",
+      "body": "A Corevo participou da NEON 2026, em Maceió (AL), com estande próprio e apresentação do Locus, aplicativo voltado ao mercado imobiliário. Durante o evento, os fundadores conversaram com investidores, empreendedores e representantes do ecossistema de inovação, além de acompanhar palestras e atividades sobre tecnologia e empreendedorismo. A participação também marcou a representação de Paulo Afonso no encontro.",
+      "date": "13/16/2026",
+      "hidden": false
+    },
+    {
+      "id": "nota-8",
+      "theme": "Palestras",
+      "title": "Corevo palestra no Startup Day ",
+      "summary": "Startup participou como palestrante em evento de inovação em Paulo Afonso.",
+      "body": "A Corevo participou como palestrante do Startup Day 2026, em Paulo Afonso (BA), no dia 21 de março. Durante o evento, foram abordados temas como vibe coding, mercado global e posicionamento de startups. A participação marca uma nova etapa da trajetória da empresa no ecossistema de inovação, após sua presença no BTX 2025, em Salvador. A programação reuniu empreendedores e agentes do ecossistema de inovação.\n",
+      "date": "21/03/2026",
+      "hidden": false
+    },
+    {
+      "id": "nota-9",
+      "theme": "Eventos",
+      "title": "Corevo participa do BTX 2025",
+      "summary": "Fundadores participaram de pitches e apresentaram a Corevo no evento de inovação",
+      "body": "A Corevo participou do Bahia Tech Experience (BTX) 2025, realizado de 2 a 4 de outubro, no Centro de Convenções de Salvador. Durante o evento, Caio participou de uma batalha de pitch, enquanto Cássio e Elislécio estiveram no palco apresentando a Corevo e seus projetos. A equipe também participou de encontros e conversas com outras startups e instituições, fortalecendo conexões e ampliando sua experiência no ecossistema de inovação.\n",
+      "date": "04/10/2025",
+      "hidden": false
+    }
+  ]
 }
