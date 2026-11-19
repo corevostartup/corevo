@@ -50,7 +50,7 @@ export function Header() {
         <Link href="/" className="flex items-center gap-2.5" aria-label="COREVO — Core Evolution">
           <span className="relative h-9 w-9 shrink-0">
             <Image
-              src="/corevo-logo.png"
+              src="/corevo-emblem.png"
               alt=""
               fill
               className="object-contain"

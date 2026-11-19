@@ -4,6 +4,7 @@ import { Hero } from "@/components/Hero";
 import { TrustBar } from "@/components/TrustBar";
 import { Benefits } from "@/components/Benefits";
 import { ProjectsTicker } from "@/components/ProjectsTicker";
+import { News } from "@/components/News";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Essence } from "@/components/Essence";
 import { Testimonials } from "@/components/Testimonials";
@@ -26,6 +27,7 @@ export default function HomePage() {
         <TrustBar />
         <Benefits />
         <ProjectsTicker />
+        <News />
         <HowItWorks />
         <Essence />
         <Testimonials />
