@@ -53,7 +53,7 @@ export function Benefits() {
         >
           {benefits.items.map((item, index) => (
             <motion.li
-              key={`${item.title}-${index}`}
+              key={index}
               variants={itemMotion}
               className={cn(
                 "group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 transition-colors duration-300",

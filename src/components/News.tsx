@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/components/LanguageProvider";
 import { useSiteContent } from "@/components/SiteContentProvider";
@@ -28,15 +28,56 @@ export function News() {
   const { locale } = useLanguage();
   const text = newsCopy[locale];
   const items = useSiteContent().news.filter((item) => !item.hidden);
+  const [englishById, setEnglishById] = useState<Record<string, (typeof items)[number]>>({});
+  const sourceKey = items
+    .map((item) => [item.id, item.theme, item.title, item.summary, item.body, item.date].join("\u0001"))
+    .join("\u0002");
+
+  useEffect(() => {
+    if (locale !== "en" || items.length === 0) return;
+    const controller = new AbortController();
+    fetch("/api/translate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      signal: controller.signal,
+      body: JSON.stringify({
+        items: items.map((item) => ({
+          id: item.id,
+          theme: item.theme,
+          title: item.title,
+          summary: item.summary,
+          body: item.body,
+          date: item.date,
+        })),
+      }),
+    })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data) => {
+        if (!data?.items) return;
+        setEnglishById((current) => {
+          const next = { ...current };
+          for (const item of data.items) {
+            if (item?.id) next[item.id] = { ...items.find((entry) => entry.id === item.id), ...item, hidden: false };
+          }
+          return next;
+        });
+      })
+      .catch(() => undefined);
+    return () => controller.abort();
+    // sourceKey já representa o conteúdo das notas; items muda de identidade a cada render.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [locale, sourceKey]);
   const [open, setOpen] = useState(false);
   const [page, setPage] = useState(0);
   const [expandedId, setExpandedId] = useState<string | null>(null);
-  const pageCount = Math.ceil(items.length / pageSize);
+  const shown =
+    locale === "en" ? items.map((item) => englishById[item.id] ?? item) : items;
+  const pageCount = Math.ceil(shown.length / pageSize);
   const start = open ? page * pageSize : 0;
   const count = open ? pageSize : previewCount;
-  const visible = items.slice(start, start + count);
+  const visible = shown.slice(start, start + count);
   const expanded = expandedId !== null && visible.some((item) => item.id === expandedId);
-  const showArrows = open && items.length > pageSize && !expanded;
+  const showArrows = open && shown.length > pageSize && !expanded;
 
   const close = () => {
     setOpen(false);
@@ -48,7 +89,7 @@ export function News() {
     setExpandedId((current) => (current === id ? null : id));
   };
 
-  if (items.length === 0) return null;
+  if (shown.length === 0) return null;
 
   return (
     <section id="notas" className="border-t border-white/[0.06] py-16 lg:py-20">
@@ -82,7 +123,7 @@ export function News() {
           ) : null}
 
           <ul
-            className={`grid gap-4 sm:grid-cols-2 lg:grid-cols-3 ${open && items.length > pageSize ? "px-12" : ""}`}
+            className={`grid gap-4 sm:grid-cols-2 lg:grid-cols-3 ${open && shown.length > pageSize ? "px-12" : ""}`}
           >
             {visible.map((item) => {
               const isExpanded = expandedId === item.id;
@@ -142,7 +183,7 @@ export function News() {
           ) : null}
         </div>
 
-        {items.length > previewCount ? (
+        {shown.length > previewCount ? (
           <div className="mt-8">
             <button
               type="button"
